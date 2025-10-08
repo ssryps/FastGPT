@@ -215,7 +215,6 @@ services:
         condition: service_healthy
     networks:
       - fastgpt
-      - aiproxy
     environment:
       # 对应 fastgpt 里的AIPROXY_API_TOKEN
       ADMIN_KEY: *x-aiproxy-token
@@ -241,7 +240,7 @@ services:
     volumes:
       - ./aiproxy_pg:/var/lib/postgresql/data
     networks:
-      - aiproxy
+      - fastgpt
     environment:
       TZ: Asia/Shanghai
       POSTGRES_USER: postgres
@@ -254,6 +253,4 @@ services:
       retries: 10
 networks:
   fastgpt:
-  aiproxy:
-  vector:
 
