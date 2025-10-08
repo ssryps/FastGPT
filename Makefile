@@ -12,6 +12,9 @@ endif
 
 filePath=./projects/$(name)/Dockerfile
 
+install_deps:
+	pnpm i
+
 dev:
 	pnpm --prefix ./projects/$(name) dev
 
