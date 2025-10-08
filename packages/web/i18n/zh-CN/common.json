@@ -1228,7 +1228,7 @@
   "sure_delete_tool_cannot_undo": "是否确认删除该工具？该操作无法撤回",
   "sync_link": "同步链接",
   "sync_success": "同步成功",
-  "system.Concat us": "联系我们",
+  "system.Concat us": "联系经研院AI应用中心",
   "system.Help Document": "帮助文档",
   "system_help_chatbot": "机器人助手",
   "system_intro": "{{title}} 是一个大模型应用编排系统，提供开箱即用的数据处理、模型调用等能力，可以快速的构建知识库并通过 Flow 可视化进行工作流编排，实现复杂的知识库场景！\n",

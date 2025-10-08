@@ -1,7 +1,7 @@
 # 定义默认变量
 proxy=null
 image=null
-
+name=app
 # 定义目标
 .PHONY: build
 

@@ -250,27 +250,22 @@ const Header = ({ hasTrainingData }: { hasTrainingData: boolean }) => {
                       ),
                       onClick: onOpenFileSourceSelector
                     },
-                    ...(feConfigs?.isPlus
-                      ? [
-                          {
-                            label: (
-                              <Flex>
-                                <MyIcon name={'image'} mr={2} w={'20px'} />
-                                {t('dataset:core.dataset.Image collection')}
-                              </Flex>
-                            ),
-                            onClick: () =>
-                              router.replace({
-                                query: {
-                                  ...router.query,
-                                  currentTab: TabEnum.import,
-                                  source: ImportDataSourceEnum.imageDataset
-                                }
-                              })
+                    {
+                      label: (
+                        <Flex>
+                          <MyIcon name={'image'} mr={2} w={'20px'} />
+                          {t('dataset:core.dataset.Image collection')}
+                        </Flex>
+                      ),
+                      onClick: () =>
+                        router.replace({
+                          query: {
+                            ...router.query,
+                            currentTab: TabEnum.import,
+                            source: ImportDataSourceEnum.imageDataset
                           }
-                        ]
-                      : []),
-
+                        })
+                    },
                     {
                       label: (
                         <Flex>
