@@ -166,7 +166,7 @@ const LogChart = ({
       });
     },
     {
-      manual: !feConfigs?.isPlus,
+      manual: false,
       refreshDeps: [
         appId,
         dateRange.from,
@@ -181,7 +181,7 @@ const LogChart = ({
   );
 
   const formatChartData = useMemo(() => {
-    if (!feConfigs?.isPlus) return fakeChartData;
+    // if (!feConfigs?.isPlus) return fakeChartData;
 
     const formatTimestamp = (timestamp: number, timespan: AppLogTimespanEnum) => {
       return timespan === AppLogTimespanEnum.week
@@ -323,7 +323,7 @@ const LogChart = ({
 
     return { user, chat, app, cumulative };
   }, [
-    feConfigs?.isPlus,
+    true,
     chartData?.userData,
     chartData?.chatData,
     chartData?.appData,
@@ -405,7 +405,7 @@ const LogChart = ({
                         {t('app:logs_total')}: {formatChartData.cumulative.userCount}
                       </Flex>
                     }
-                    blur={!feConfigs?.isPlus}
+                    blur={false}
                   />
                 </Box>
                 <Box {...chartBoxStyles}>
@@ -450,7 +450,7 @@ const LogChart = ({
                         }}
                       />
                     }
-                    blur={!feConfigs?.isPlus}
+                    blur={false}
                   />
                 </Box>
                 <Box {...chartBoxStyles}>
@@ -479,7 +479,7 @@ const LogChart = ({
                         {t('app:logs_total')}: {formatChartData.cumulative.points.toFixed(2)}
                       </Flex>
                     }
-                    blur={!feConfigs?.isPlus}
+                    blur={false}
                   />
                 </Box>
                 <Box {...chartBoxStyles}>
@@ -498,7 +498,7 @@ const LogChart = ({
                       color: value.color,
                       customValue: (data) => data.sourceCountMap[key as ChatSourceEnum]
                     }))}
-                    blur={!feConfigs?.isPlus}
+                    blur={false}
                   />
                 </Box>
               </Grid>
@@ -559,7 +559,7 @@ const LogChart = ({
                         {t('app:logs_total')}: {formatChartData.cumulative.chatItemCount}
                       </Flex>
                     }
-                    blur={!feConfigs?.isPlus}
+                    blur={false}
                   />
                 </Box>
                 <Box {...chartBoxStyles}>
@@ -588,7 +588,7 @@ const LogChart = ({
                         {t('app:logs_total')}: {formatChartData.cumulative.chatCount}
                       </Flex>
                     }
-                    blur={!feConfigs?.isPlus}
+                    blur={false}
                   />
                 </Box>
                 <Box {...chartBoxStyles}>
@@ -619,7 +619,7 @@ const LogChart = ({
                         })}
                       </Flex>
                     }
-                    blur={!feConfigs?.isPlus}
+                    blur={false}
                   />
                 </Box>
                 <Box {...chartBoxStyles}>
@@ -646,7 +646,7 @@ const LogChart = ({
                         {`${t('app:logs_total_avg_points')}: ${formatChartData.cumulative.pointsPerChat.toFixed(2)}`}
                       </Flex>
                     }
-                    blur={!feConfigs?.isPlus}
+                    blur={false}
                   />
                 </Box>
               </Grid>
@@ -720,7 +720,7 @@ const LogChart = ({
                         })}
                       </Flex>
                     }
-                    blur={!feConfigs?.isPlus}
+                    blur={false}
                   />
                 </Box>
                 <Box {...chartBoxStyles}>
@@ -747,7 +747,7 @@ const LogChart = ({
                         {`${t('app:logs_total_avg_duration')}: ${formatChartData.cumulative.avgDuration.toFixed(2)}s`}
                       </Flex>
                     }
-                    blur={!feConfigs?.isPlus}
+                    blur={false}
                   />
                 </Box>
               </Grid>
@@ -843,7 +843,7 @@ const TotalData = ({ appId }: { appId: string }) => {
     }
   } = useRequest2(
     async () => {
-      if (feConfigs?.isPlus) {
+      if (true) {
         return await getAppTotalData({ appId });
       }
       return {
@@ -854,7 +854,7 @@ const TotalData = ({ appId }: { appId: string }) => {
     },
     {
       manual: false,
-      refreshDeps: [appId, feConfigs?.isPlus]
+      refreshDeps: [appId, true]
     }
   );
 
@@ -912,12 +912,7 @@ const TotalData = ({ appId }: { appId: string }) => {
               <Box fontSize={'sm'} color={'myGray.500'} mb={1}>
                 {item.label}
               </Box>
-              <Box
-                fontSize={'28px'}
-                fontWeight={'medium'}
-                color={'myGray.900'}
-                filter={feConfigs?.isPlus ? 'none' : 'blur(7.5px)'}
-              >
+              <Box fontSize={'28px'} fontWeight={'medium'} color={'myGray.900'} filter={'none'}>
                 {item.value.toLocaleString()}
               </Box>
             </Flex>

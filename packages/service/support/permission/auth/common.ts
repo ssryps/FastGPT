@@ -163,11 +163,11 @@ export const TokenName = 'fastgpt_token';
 export const setCookie = (res: NextApiResponse, token: string) => {
   res.setHeader(
     'Set-Cookie',
-    `${TokenName}=${token}; Path=/; HttpOnly; Max-Age=604800; Samesite=Strict;`
+    `${TokenName}=${token}; Path=/knowledgebase; HttpOnly; Max-Age=604800; Samesite=Strict;`
   );
 };
 
 /* clear cookie */
 export const clearCookie = (res: NextApiResponse) => {
-  res.setHeader('Set-Cookie', `${TokenName}=; Path=/; Max-Age=0`);
+  res.setHeader('Set-Cookie', `${TokenName}=; Path=/knowledgebase; Max-Age=0`);
 };

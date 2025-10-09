@@ -17,7 +17,7 @@ import { AppContext } from '@/pageComponents/app/detail/context';
 const Logs = () => {
   const { t } = useTranslation();
   const { feConfigs } = useSystemStore();
-  const [viewMode, setViewMode] = useState<'chart' | 'table'>(feConfigs.isPlus ? 'chart' : 'table');
+  const [viewMode, setViewMode] = useState<'chart' | 'table'>('chart');
   const appId = useContextSelector(AppContext, (v) => v.appId);
 
   const [dateRange, setDateRange] = useState<DateRangeType>({
@@ -83,7 +83,7 @@ const Logs = () => {
               {t('app:log_detail')}
             </Flex>
           </Flex>
-          {viewMode === 'chart' && !feConfigs.isPlus && (
+          {viewMode === 'chart' && false && (
             <ProText signKey={'app_log'}>
               <Flex alignItems={'center'} cursor={'pointer'}>
                 <Box color={'primary.600'} fontSize="sm" fontWeight={'medium'} mr={1}>

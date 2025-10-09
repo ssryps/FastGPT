@@ -22,11 +22,11 @@ const Empty = ({
 
   return (
     <Box
-      minH={'100%'}
+      minH={'20%'}
       w={'85%'}
       maxW={'600px'}
       m={'auto'}
-      py={'5vh'}
+      py={'2vh'}
       alignItems={'center'}
       justifyContent={'center'}
     >
@@ -42,17 +42,14 @@ const Empty = ({
         </Card>
       )}
 
-      {showChatProblem && (
+      {
         <>
           {/* version intro */}
           <Card p={4} mb={10}>
             <Markdown source={versionIntro} />
           </Card>
-          <Card p={4}>
-            <Markdown source={chatProblem} />
-          </Card>
         </>
-      )}
+      }
     </Box>
   );
 };

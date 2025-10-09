@@ -1,6 +1,6 @@
 # 定义默认变量
 proxy=null
-image=null
+image=fastgpt:v4.13.1_etrc
 name=app
 # 定义目标
 .PHONY: build

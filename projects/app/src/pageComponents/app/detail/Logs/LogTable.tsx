@@ -84,7 +84,7 @@ const LogTable = ({
   const { data: members, ScrollData: TmbScrollData } = useScrollPagination(getTeamMembers, {
     params: { searchKey: tmbInputValue },
     refreshDeps: [tmbInputValue],
-    disabled: !feConfigs?.isPlus
+    disabled: false
   });
   const tmbList = useMemo(
     () =>
@@ -384,7 +384,7 @@ const LogTable = ({
             }}
           />
         </Flex>
-        {feConfigs?.isPlus && (
+        {true && (
           <Flex>
             <MultipleSelect<string>
               list={tmbList}
