@@ -79,6 +79,7 @@ COPY --from=builder /app/projects/app/package.json ./package.json
 
 # copy config
 COPY ./projects/app/data /app/data
+
 RUN chown -R nextjs:nodejs /app/data
 
 # Add tmp directory permission control

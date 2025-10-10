@@ -1,0 +1,51 @@
+version: '0.1'
+
+services:
+  m3e-embedding:
+    image: stawky/m3e-large-api:latest
+    container_name: m3e-large-api
+    restart: always
+    networks:
+      - fastgpt
+    ports:
+      - 6008:6008
+
+
+  bge-reranker:
+    image: bge-rerank-v2-m3:v0.1cu128
+#    image: registry.cn-hangzhou.aliyuncs.com/fastgpt/bge-rerank-v2-m3:v0.1
+    container_name: reranker
+    restart: always
+    networks:
+      - fastgpt
+    # GPU运行环境，如果宿主机未安装，将deploy配置隐藏即可
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            count: 1
+            capabilities: [gpu]
+    ports:
+      - 6006:6006
+    environment:
+      - ACCESS_TOKEN=sk-aaabbbcccdddeeefffggghhhiiijjjkkk
+      
+  mineru-pdf:
+    image: mineru:v2
+    container_name: mineru-pdf
+    restart: always
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    ports:
+      - 6007:8000
+
+
+networks:
+  fastgpt:  
+    external: true  

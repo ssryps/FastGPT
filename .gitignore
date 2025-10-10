@@ -8,6 +8,12 @@ out/
 # production
 build/
 .astro/
+mongo/
+aiproxy_pg/
+pg/
+redis/
+fastgpt-minio/
+deploy/docker/global/data.tar.gz
 
 # misc
 .DS_Store

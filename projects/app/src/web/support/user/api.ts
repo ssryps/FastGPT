@@ -1,4 +1,4 @@
-import { GET, POST, PUT } from '@/web/common/api/request';
+import { GET, POST, PUT, DELETE } from '@/web/common/api/request';
 import { hashStr } from '@fastgpt/global/common/string/tools';
 import type { LoginSuccessResponse } from '@/global/support/api/userRes.d';
 import type { UserAuthTypeEnum } from '@fastgpt/global/support/user/auth/constants';
@@ -16,6 +16,7 @@ import type {
 } from '@fastgpt/global/support/user/login/api.d';
 import type { preLoginResponse } from '@/pages/api/support/user/account/preLogin';
 import type { WxLoginProps } from '@fastgpt/global/support/user/api.d';
+
 
 export const sendAuthCode = (data: {
   username: string;
@@ -125,3 +126,15 @@ export const GetSearchUserGroupOrg = (
   GET<SearchResult>('/proApi/support/user/search', { searchKey, ...options }, { maxQuantity: 1 });
 
 export const ExportMembers = () => GET<{ csv: string }>('/proApi/support/user/team/member/export');
+
+export const fetchUsers = () =>
+    GET<UserType[]>('/admin/users');
+
+export const addUser = (userData: any) =>
+    POST('/admin/users', userData);
+
+export const updateUser = (userId: string | number, userData: any) =>
+    PUT(`/admin/users/${userId}`, userData);
+
+export const deleteUser = (userId: string | number) =>
+    DELETE(`/admin/users/${userId}`);
